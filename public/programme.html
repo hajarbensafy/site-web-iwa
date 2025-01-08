@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/app.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Personnalisation des couleurs des onglets */
+        .nav-pills .nav-link {
+            /* background-color: #28a745; Vert */
+            color: #28a745;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #218838;
+            /* Vert foncé pour l'onglet actif */
+            color: white;
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: #34ce57;
+            /* Vert clair au survol */
+            color: white;
+        }
+    </style>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css">
+       <script src="https://cdn.tailwindcss.com"></script>
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+       <script>
+           tailwind.config = {
+               theme: {
+                   extend: {
+                       animation: {
+                           'gradient-x': 'gradient-x 15s ease infinite',
+                           'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                       },
+                       keyframes: {
+                           'gradient-x': {
+                               '0%, 100%': {
+                                   'background-size': '200% 200%',
+                                   'background-position': 'left center'
+                               },
+                               '50%': {
+                                   'background-size': '200% 200%',
+                                   'background-position': 'right center'
+                               }
+                           },
+                           'pulse': {
+                               '0%, 100%': { opacity: 1 },
+                               '50%': { opacity: .5 }
+                           }
+                       }
+                   }
+               }
+           }
+       </script>
+
+</head>
+
+<body>
+    <nav class="bg-white shadow-lg fixed w-full z-50 ">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-16">
+            <div class="flex-shrink-0 flex items-center">
+              <img src="../public/images/Ingénierie du Web Avancé (3).png" alt="IWA Logo" class="h-12 w-auto"/>
+            </div>
+            
+            <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
+              <a href="../index.html" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+                Accueil
+              </a>
+              
+              <div class="relative group">
+                <button class="text-gray-700 group-hover:text-emerald-600 px-3 py-2 text-md font-medium inline-flex items-center transition-colors">
+                  Formation IWA
+                  <svg class="ml-2 h-4 w-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block transition-all duration-200">
+                  <div class="py-1">
+                    <a href="./objectifs.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                      Objectifs
+                    </a>
+                    <a href="./programme.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                      Programme
+                    </a>
+                    <a href="./preinscription.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                      Préinscription
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <a href="/evenements" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+                Événements
+              </a>
+              
+              <a href="/espace-etudiants" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+                Espace Étudiants
+              </a>
+              
+              <a href="/galerie" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+                Galerie
+              </a>
+              
+              <a href="./contact.html" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+                Contact
+              </a>
+            </div>
+      
+            <div class="flex items-center sm:hidden">
+              <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-emerald-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500">
+                <span class="sr-only">Open main menu</span>
+                <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div class="text text-center">
+        <h2>Programme de la formation</h2>
+        <p>La formation est répartie sur 4 semestres et chaque semestre est constitué de 4 modules:</p>
+
+    </div>
+    <ul class="nav nav-pills m-3 d-flex flex-row justify-content-center " id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Semestre 1</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Semestre 2</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Semestre 3</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled"
+                type="button" role="tab" aria-controls="pills-disabled" aria-selected="false">Semestre 4</button>
+        </li>
+    </ul>
+    <div class="tab-content m-5" id="pills-tabContent">
+        <div class="tab-pane m-5  fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+            tabindex="0">
+            <ul>
+                <div class="mb-3"> <b class="fw-bold text-success ">M1 : Initiation web: HTML – CSS – PHP</b> <br>
+                    <p class="mt-2"> Ce module concerne l’exploration des différentes fonctionnalités du HTML et du CSS
+                        pour le développement des pages web statiques ainsi que l’initiation au PHP pour le
+                        développement des pages web dynamiques.
+                <div class=""> <b class="fw-bold  text-success">M2 : Développement Orienté Objet & Java-JEE (Spring
+                        Framework)</b> <br></p>
+                    <p class="mt-2">Programmation orientée Objet en Java
+                        Bases du langage Java
+                        Principes de la programmation objet et UML
+                        Spring framework – Spring Web – Spring Data – Spring Security – Microservices et Spring Cloud
+                    </p>
+                </li>
+                <div><b class="fw-bold  text-success"> M3 : Programmation Python pour le développement web</b><br>
+                    <p class="mt-2"> Initier l’étudiant à se familiariser avec les concepts de python et apprendre à
+                        concevoir et à créer et maintenir un site web dynamique en utilisant le Framework Django.
+                        M4 : Javascript avancé et Angular
+                        Respecter le modèle de développement en couches
+                        Maitriser le développement des composants réutilisables
+                        Communiquer avec l’application BackEnd
+                        Réutiliser les éléments Angular déjà développés</p>
+                </div>
+            </ul>
+        </div>
+        <div class="tab-pane m-5 fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+            tabindex="0">
+            <ul>
+                <div><b class=" text-success">M5 : React JS, React Native et PWA</b><br>
+                    Le module React commence par reprendre les fondamentaux de JavaScript utiles au framework, ensuite
+                    les bases de React, les composants, Redux, le système de centralisation des données et des actions,
+                    le routage, JSX, puis les spécificités de React Native.
+                </div>
+                <div><b class=" text-success">M6 : Développement des sites web avec les CMS</b><br>
+                    Développement des sites web informationnels et boutiques en ligne par l’utilisation des outils
+                    élaborés : CMS (Content Management System).
+                </div>
+                <div><b class=" text-success">M7 : Cloud Computing</b><br>
+                    Ce module est focalisé sur la technologie Cloud Computing. Il fournit une introduction et la
+                    définition de domaine, il présente les caractéristiques essentielles et les principaux avantages du
+                    Cloud Computing. Il décrit également les principaux modèles de services et les principaux modèles de
+                    déploiement.
+                </div>
+                <div><b class=" text-success">M8 : Base de données orientées Web</b><br>
+                    Ce module concerne les bases de données dans les environnements web. De leur modélisation à leur
+                    traitement en passant par les questions de standards qui orientent le choix entre les bases de
+                    données relationnelles et les bases de données NoSql.
+                </div>
+            </ul>
+        </div>
+        <div class="tab-pane m-5 fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
+            tabindex="0">
+            <ul>
+                <div><b class=" text-success">M9 : Internet of Things</b><br>
+                    Programmation mobile et Web, Internet des objets (IoT).
+                </div>
+                <div><b class=" text-success">M10 : ServiceNow</b><br>
+                    ServiceNow fournit une solution « Software as a service » qui centralise l’ensemble des processus de
+                    l’entreprise et transforme les anciennes méthodes de travail en workflows numériques. Ce module
+                    couvre tout ce qui est nécessaire pour maîtriser les scripts sur la plateforme ServiceNow, ainsi que
+                    le fonctionnement des API ServiceNow.
+                </div>
+                <div><b class=" text-success">M11 : Infographie pour le web</b><br>
+                    Photoshop et Illustrator sont des logiciels incontournables pour la conception et la réalisation
+                    d’interfaces web répondant à des critères techniques spécifiques. Dans ce module, nous abordons la
+                    préparation des logos, des visuels et des interfaces graphiques, ainsi que la réalisation des
+                    bannières publicitaires pour le web et le mobile et la préparation des chartes graphiques des sites
+                    web.
+                </div>
+                <div><b class=" text-success">M12 : Soft Skills – Gestion de Projets – Méthodes de Test</b><br>
+                    Soft-Skills : Compétences sociales, personnelles et méthodologiques. Gestion de Projet :
+                    Contraintes, Intervenants, phases de gestion, cycle de vie et méthodes de gestion. Méthodes de Test.
+                </div>
+            </ul>
+        </div>
+        <div class="tab-pane m-5 fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab"
+            tabindex="0">
+            <p><b class=" text-success">Stage professionnel</b><br>
+                Un stage professionnel de 4 mois, avec un mémoire à préparer et une soutenance devant un jury. En raison
+                du caractère professionnel de ce DCESS, le stage en entreprise occupe une place importante dans cette
+                formation et l’évaluation des apprenants.
+            </p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

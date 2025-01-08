@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Notes - Administration</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-layout">
+    <script>
+        if (!sessionStorage.getItem('isAdminLoggedIn')) {
+            window.location.href = './login.html';
+        }
+    </script>
+
+   <!-- Sidebar -->
+   <nav class="sidebar">
+    <div class="sidebar-header">
+        <h2>Administration</h2>
+    </div>
+    <ul class="nav-links">
+        <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i>Tableau de bord</a></li>
+        <li><a href="etudiants.html"><i class="fas fa-user-graduate"></i>Étudiants</a></li>
+        <li><a href="notes.html"><i class="fas fa-star"></i>Notes</a></li>
+        <li><a href="attestations.html"><i class="fas fa-file-alt"></i>Attestations</a></li>
+        <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i>Déconnexion</a></li>
+    </ul>
+</nav>
+    <main class="main-content">
+        <header class="admin-header">
+            <h1>Gestion des Notes</h1>
+            <div class="user-info">
+                <span>Administrateur</span>
+                <img src="../public/images/avatar-admin.png" alt="Admin" class="avatar">
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="actions">
+                <button class="btn btn-primary" onclick="openNoteModal()">
+                    <i class="fas fa-plus"></i> Ajouter une note
+                </button>
+            </div>
+
+            <div class="filters">
+                <select id="classeFilter" class="form-control">
+                    <option value="">Toutes les classes</option>
+                    <option value="L1">Licence 1</option>
+                    <option value="L2">Licence 2</option>
+                    <option value="L3">Licence 3</option>
+                </select>
+                <select id="moduleFilter" class="form-control">
+                    <option value="">Tous les modules</option>
+                    <option value="PHP">PHP</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="HTML/CSS">HTML/CSS</option>
+                </select>
+            </div>
+
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Étudiant</th>
+                                <th>Module</th>
+                                <th>Note</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="notesList">
+                            <!-- Les notes seront ajoutées ici -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal d'ajout/modification de note -->
+        <div class="modal" id="noteModal">
+            <div class="modal-content">
+                <h2>Ajouter une note</h2>
+                <form id="noteForm" onsubmit="handleNoteSubmit(event)">
+                    <div class="form-group">
+                        <label for="etudiant">Étudiant *</label>
+                        <select id="etudiant" name="etudiant" required>
+                            <option value="">Sélectionner un étudiant</option>
+                            <!-- Les étudiants seront ajoutés dynamiquement -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="module">Module *</label>
+                        <select id="module" name="module" required>
+                            <option value="">Sélectionner un module</option>
+                            <option value="PHP">PHP</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="HTML/CSS">HTML/CSS</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="note">Note /20 *</label>
+                        <input type="number" id="note" name="note" min="0" max="20" step="0.5" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeNoteModal()">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Charger quelques données de test
+        const etudiants = [
+            { id: "ETU001", nom: "Dupont Jean" },
+            { id: "ETU002", nom: "Martin Sophie" },
+            { id: "ETU003", nom: "Garcia Maria" }
+        ];
+
+        // Remplir la liste des étudiants dans le formulaire
+        const selectEtudiant = document.getElementById('etudiant');
+        etudiants.forEach(etudiant => {
+            const option = document.createElement('option');
+            option.value = etudiant.id;
+            option.textContent = etudiant.nom;
+            selectEtudiant.appendChild(option);
+        });
+
+        // Fonctions pour la modal et la gestion des notes
+        function openNoteModal() {
+            document.getElementById('noteModal').classList.add('active');
+        }
+
+        function closeNoteModal() {
+            document.getElementById('noteModal').classList.remove('active');
+            document.getElementById('noteForm').reset();
+        }
+
+        function handleNoteSubmit(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const etudiantSelect = document.getElementById('etudiant');
+            const etudiantNom = etudiantSelect.options[etudiantSelect.selectedIndex].text;
+            const noteData = {
+                etudiant: etudiantNom,
+                module: formData.get('module'),
+                note: formData.get('note'),
+                date: new Date().toLocaleDateString()
+            };
+
+            // Ajouter la note au tableau
+            const tbody = document.getElementById('notesList');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${noteData.etudiant}</td>
+                <td>${noteData.module}</td>
+                <td>${noteData.note}/20</td>
+                <td>${noteData.date}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick="editNote(this)">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteNote(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+
+            closeNoteModal();
+        }
+
+        // Fonction pour éditer une note
+        function editNote(btn) {
+            const tr = btn.closest('tr');
+            const cells = tr.cells;
+            
+            // Trouver l'ID de l'étudiant à partir du nom
+            const etudiantNom = cells[0].textContent;
+            const etudiant = etudiants.find(e => e.nom === etudiantNom);
+            
+            // Remplir le formulaire
+            document.getElementById('etudiant').value = etudiant ? etudiant.id : '';
+            document.getElementById('module').value = cells[1].textContent;
+            document.getElementById('note').value = cells[2].textContent.split('/')[0];
+
+            // Ouvrir la modal
+            openNoteModal();
+            
+            // Supprimer l'ancienne ligne
+            tr.remove();
+        }
+
+        // Fonction pour supprimer une note
+        function deleteNote(btn) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cette note ?')) {
+                btn.closest('tr').remove();
+            }
+        }
+
+        // Fonction de déconnexion
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = './login.html';
+        }
+
+        // Ajouter quelques notes de test
+        window.addEventListener('DOMContentLoaded', function() {
+            const testNotes = [
+                { etudiant: "Dupont Jean", module: "PHP", note: "15", date: "01/03/2024" },
+                { etudiant: "Martin Sophie", module: "JavaScript", note: "17", date: "02/03/2024" }
+            ];
+
+            const tbody = document.getElementById('notesList');
+            testNotes.forEach(note => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${note.etudiant}</td>
+                    <td>${note.module}</td>
+                    <td>${note.note}/20</td>
+                    <td>${note.date}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="editNote(this)">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteNote(this)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Attestations - Administration</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-layout">
+    <script>
+        if (!sessionStorage.getItem('isAdminLoggedIn')) {
+            window.location.href = './login.html';
+        }
+    </script>
+
+     <!-- Sidebar -->
+     <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>Administration</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i>Tableau de bord</a></li>
+            <li><a href="etudiants.html"><i class="fas fa-user-graduate"></i>Étudiants</a></li>
+            <li><a href="notes.html"><i class="fas fa-star"></i>Notes</a></li>
+            <li><a href="attestations.html"><i class="fas fa-file-alt"></i>Attestations</a></li>
+            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i>Déconnexion</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header class="admin-header">
+            <h1>Gestion des Attestations</h1>
+            <div class="user-info">
+                <span>Administrateur</span>
+                <img src="../public/images/avatar-admin.png" alt="Admin" class="avatar">
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="filters">
+                <select id="statusFilter" class="form-control">
+                    <option value="">Tous les statuts</option>
+                    <option value="en_attente">En attente</option>
+                    <option value="validee">Validée</option>
+                    <option value="refusee">Refusée</option>
+                </select>
+            </div>
+
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Étudiant</th>
+                                <th>Type</th>
+                                <th>Date demande</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attestationsList">
+                            <!-- Les demandes seront ajoutées ici -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de traitement d'attestation -->
+        <div class="modal" id="attestationModal">
+            <div class="modal-content">
+                <h2>Traiter la demande</h2>
+                <form id="attestationForm" onsubmit="handleAttestationSubmit(event)">
+                    <div class="form-group">
+                        <label for="status">Statut *</label>
+                        <select id="status" name="status" required>
+                            <option value="validee">Valider</option>
+                            <option value="refusee">Refuser</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentaire">Commentaire</label>
+                        <textarea id="commentaire" name="commentaire" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeAttestationModal()">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Données de test pour les attestations
+        const attestations = [
+            {
+                etudiant: "Dupont Jean",
+                type: "Attestation de scolarité",
+                date: "01/03/2024",
+                status: "en_attente",
+                motif: "Pour dossier CAF"
+            },
+            {
+                etudiant: "Martin Sophie",
+                type: "Convention de stage",
+                date: "02/03/2024",
+                status: "en_attente",
+                motif: "Stage de fin d'études"
+            }
+        ];
+        
+        // Fonction pour afficher les attestations
+        function afficherAttestations(attestations) {
+            const tbody = document.getElementById('attestationsList');
+            tbody.innerHTML = ''; // Vider le tableau
+            
+            attestations.forEach(attestation => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${attestation.etudiant}</td>
+                    <td>${attestation.type}</td>
+                    <td>${attestation.date}</td>
+                    <td>
+                        <span class="badge badge-${getBadgeClass(attestation.status)}">
+                            ${getStatusLabel(attestation.status)}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="traiterAttestation(this)" 
+                                data-etudiant="${attestation.etudiant}"
+                                data-type="${attestation.type}"
+                                data-motif="${attestation.motif}">
+                            <i class="fas fa-edit"></i> Traiter
+                        </button>
+                        <button class="btn btn-success btn-sm" onclick="telechargerAttestation(this)"
+                                ${attestation.status !== 'validee' ? 'disabled' : ''}>
+                            <i class="fas fa-download"></i> Télécharger
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        
+        // Fonctions utilitaires pour l'affichage
+        function getBadgeClass(status) {
+            switch(status) {
+                case 'en_attente': return 'warning';
+                case 'validee': return 'success';
+                case 'refusee': return 'danger';
+                default: return 'secondary';
+            }
+        }
+        
+        function getStatusLabel(status) {
+            switch(status) {
+                case 'en_attente': return 'En attente';
+                case 'validee': return 'Validée';
+                case 'refusee': return 'Refusée';
+                default: return status;
+            }
+        }
+        
+        // Gestion de la modal
+        let attestationEnCours = null;
+        
+        function openAttestationModal() {
+            document.getElementById('attestationModal').classList.add('active');
+        }
+        
+        function closeAttestationModal() {
+            document.getElementById('attestationModal').classList.remove('active');
+            document.getElementById('attestationForm').reset();
+            attestationEnCours = null;
+        }
+        
+        function traiterAttestation(btn) {
+            attestationEnCours = {
+                etudiant: btn.dataset.etudiant,
+                type: btn.dataset.type,
+                motif: btn.dataset.motif
+            };
+            
+            // Mettre à jour le titre de la modal
+            const modalTitle = document.querySelector('#attestationModal h2');
+            modalTitle.textContent = `Traiter la demande de ${attestationEnCours.etudiant}`;
+            
+            // Afficher les détails dans la modal
+            const detailsHtml = `
+                <div class="attestation-details">
+                    <p><strong>Type :</strong> ${attestationEnCours.type}</p>
+                    <p><strong>Motif :</strong> ${attestationEnCours.motif}</p>
+                </div>
+            `;
+            
+            document.querySelector('#attestationModal .modal-content').insertAdjacentHTML('afterbegin', detailsHtml);
+            
+            openAttestationModal();
+        }
+        
+        function handleAttestationSubmit(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const status = formData.get('status');
+            const commentaire = formData.get('commentaire');
+            
+            // Mettre à jour l'attestation dans le tableau
+            const attestation = attestations.find(a => 
+                a.etudiant === attestationEnCours.etudiant && 
+                a.type === attestationEnCours.type
+            );
+            
+            if (attestation) {
+                attestation.status = status;
+                attestation.commentaire = commentaire;
+                
+                // Rafraîchir l'affichage
+                afficherAttestations(attestations);
+                
+                // Notification
+                alert(`La demande a été ${status === 'validee' ? 'validée' : 'refusée'}`);
+            }
+            
+            closeAttestationModal();
+        }
+        
+        function telechargerAttestation(btn) {
+            // Simulation de téléchargement
+            alert('Le téléchargement de l\'attestation va commencer...');
+        }
+        
+        // Filtrage des attestations
+        document.getElementById('statusFilter').addEventListener('change', function(e) {
+            const status = e.target.value;
+            const filteredAttestations = status ? 
+                attestations.filter(a => a.status === status) : 
+                attestations;
+            
+            afficherAttestations(filteredAttestations);
+        });
+        
+        // Fonction de déconnexion
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = './login.html';
+        }
+        
+        // Charger les attestations au démarrage
+        window.addEventListener('DOMContentLoaded', function() {
+            afficherAttestations(attestations);
+        });
+    </script>
+</body>
+</html> 

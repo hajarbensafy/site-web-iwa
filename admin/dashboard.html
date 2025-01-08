@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Tableau de bord</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-layout">
+    <script>
+        // Vérifier si l'admin est connecté
+        if (!sessionStorage.getItem('isAdminLoggedIn')) {
+            window.location.href = './login.html';
+        }
+    </script>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>Administration</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i>Tableau de bord</a></li>
+            <li><a href="etudiants.html"><i class="fas fa-user-graduate"></i>Étudiants</a></li>
+            <li><a href="notes.html"><i class="fas fa-star"></i>Notes</a></li>
+            <li><a href="attestations.html"><i class="fas fa-file-alt"></i>Attestations</a></li>
+            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i>Déconnexion</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+        <header class="admin-header">
+            <h1>Tableau de bord</h1>
+            <div class="user-info">
+                <span>Administrateur</span>
+                <img src="../public/images/avatar-admin.png" alt="Admin" class="avatar">
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Total Étudiants</h3>
+                    <p class="stat-number">150</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Cours actifs</h3>
+                    <p class="stat-number">12</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Demandes en attente</h3>
+                    <p class="stat-number">5</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-activities">
+            <h2>Activités récentes</h2>
+            <div class="activity-list" id="activityList">
+                <!-- Les activités seront ajoutées dynamiquement -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = './login.html';
+        }
+
+        // Simuler des activités récentes
+        const activities = [
+            { type: 'inscription', text: 'Nouvel étudiant inscrit', time: 'Il y a 2 heures' },
+            { type: 'note', text: 'Notes mises à jour - Module PHP', time: 'Il y a 3 heures' },
+            { type: 'document', text: 'Nouvelle attestation générée', time: 'Il y a 5 heures' }
+        ];
+
+        // Afficher les activités
+        const activityList = document.getElementById('activityList');
+        activities.forEach(activity => {
+            const icon = getActivityIcon(activity.type);
+            activityList.innerHTML += `
+                <div class="activity-item">
+                    <i class="${icon}"></i>
+                    <div class="activity-info">
+                        <p>${activity.text}</p>
+                        <span class="activity-time">${activity.time}</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        function getActivityIcon(type) {
+            switch(type) {
+                case 'inscription': return 'fas fa-user-plus';
+                case 'note': return 'fas fa-star';
+                case 'document': return 'fas fa-file-alt';
+                default: return 'fas fa-info-circle';
+            }
+        }
+    </script>
+</body>
+</html> 

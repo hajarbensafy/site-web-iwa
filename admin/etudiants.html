@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Étudiants - Administration</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-layout">
+    <script>
+        // Vérifier si l'admin est connecté
+        if (!sessionStorage.getItem('isAdminLoggedIn')) {
+            window.location.href = './login.html';
+        }
+    </script>
+
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>Administration</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="fas fa-home"></i>Tableau de bord</a></li>
+            <li><a href="etudiants.html" class="active"><i class="fas fa-user-graduate"></i>Étudiants</a></li>
+            <li><a href="notes.html"><i class="fas fa-star"></i>Notes</a></li>
+            <li><a href="attestations.html"><i class="fas fa-file-alt"></i>Attestations</a></li>
+            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i>Déconnexion</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header class="admin-header">
+            <h1>Gestion des Étudiants</h1>
+            <div class="user-info">
+                <span>Administrateur</span>
+                <img src="../public/images/avatar-admin.png" alt="Admin" class="avatar">
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="actions">
+                <button class="btn btn-primary" onclick="openModal()">
+                    <i class="fas fa-plus"></i> Ajouter un étudiant
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>N° Étudiant</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Classe</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsList">
+                            <!-- Les étudiants seront ajoutés ici -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal d'ajout/modification d'étudiant -->
+        <div class="modal" id="studentModal">
+            <div class="modal-content">
+                <h2>Ajouter un étudiant</h2>
+                <form id="studentForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="studentId">Numéro étudiant *</label>
+                        <input type="text" id="studentId" name="studentId" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nom">Nom *</label>
+                        <input type="text" id="nom" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom *</label>
+                        <input type="text" id="prenom" name="prenom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="classe">Classe *</label>
+                        <select id="classe" name="classe" required>
+                            <option value="">Sélectionner une classe</option>
+                            <option value="L1">Licence 1</option>
+                            <option value="L2">Licence 2</option>
+                            <option value="L3">Licence 3</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal()">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Fonctions pour la modal
+        function openModal() {
+            document.getElementById('studentModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('studentModal').classList.remove('active');
+            document.getElementById('studentForm').reset();
+        }
+
+        // Gestion de la soumission du formulaire
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const studentData = {
+                studentId: formData.get('studentId'),
+                nom: formData.get('nom'),
+                prenom: formData.get('prenom'),
+                classe: formData.get('classe'),
+                status: 'actif'
+            };
+
+            // Ajouter l'étudiant au tableau
+            const tbody = document.getElementById('studentsList');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${studentData.studentId}</td>
+                <td>${studentData.nom}</td>
+                <td>${studentData.prenom}</td>
+                <td>${studentData.classe}</td>
+                <td><span class="badge badge-success">${studentData.status}</span></td>
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick="editStudent(this)">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteStudent(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+
+            // Fermer la modal et réinitialiser le formulaire
+            closeModal();
+        }
+
+        // Fonction pour supprimer un étudiant
+        function deleteStudent(btn) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?')) {
+                btn.closest('tr').remove();
+            }
+        }
+
+        // Fonction pour éditer un étudiant
+        function editStudent(btn) {
+            const tr = btn.closest('tr');
+            const cells = tr.cells;
+            
+            // Remplir le formulaire avec les données existantes
+            document.getElementById('studentId').value = cells[0].textContent;
+            document.getElementById('nom').value = cells[1].textContent;
+            document.getElementById('prenom').value = cells[2].textContent;
+            document.getElementById('classe').value = cells[3].textContent;
+
+            // Ouvrir la modal
+            openModal();
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = './login.html';
+        }
+    </script>
+</body>
+</html> 

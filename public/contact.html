@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IWA Formation - Contact</title>
+    <link rel="stylesheet" href="../public/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'pulse': {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: .5 }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav class="bg-white shadow-lg fixed w-full z-50 ">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-16">
+            <div class="flex-shrink-0 flex items-center">
+              <img src="../public/images/Ingénierie du Web Avancé (3).png" alt="IWA Logo" class="h-12 w-auto"/>
+            </div>
+            
+            <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
+              <a href="../index.html" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+                Accueil
+              </a>
+              
+              <div class="relative group">
+                <button class="text-gray-700 group-hover:text-emerald-600 px-3 py-2 text-md font-medium inline-flex items-center transition-colors">
+                  Formation IWA
+                  <svg class="ml-2 h-4 w-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block transition-all duration-200">
+                  <div class="py-1">
+                    <a href="./objectifs.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                      Objectifs
+                    </a>
+                    <a href="./programme.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                      Programme
+                    </a>
+                    <a href="./preinscription.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                      Préinscription
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <a href="/evenements" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+                Événements
+              </a>
+              
+              <a href="/espace-etudiants" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+                Espace Étudiants
+              </a>
+              
+              <a href="/galerie" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+                Galerie
+              </a>
+              
+              <a href="./contact.html" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+                Contact
+              </a>
+            </div>
+      
+            <div class="flex items-center sm:hidden">
+              <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-emerald-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500">
+                <span class="sr-only">Open main menu</span>
+                <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <main>
+        <section class="page-header">
+            <div class="header-content">
+                <h1>Contactez-nous</h1>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Accueil</a> / 
+                    <span>Contact</span>
+                </nav>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="content-container">
+                <div class="contact-wrapper">
+                    <div class="contact-form-section">
+                        <h2><i class="fas fa-paper-plane"></i> Envoyez-nous un message</h2>
+                        <form class="contact-form" action="#" method="POST">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nom">Nom complet</label>
+                                    <input type="text" id="nom" name="nom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone">Téléphone</label>
+                                <input type="tel" id="telephone" name="telephone">
+                            </div>
+                            <div class="form-group">
+                                <label for="sujet">Sujet</label>
+                                <select id="sujet" name="sujet" required>
+                                    <option value="">Sélectionnez un sujet</option>
+                                    <option value="inscription">Inscription</option>
+                                    <option value="information">Demande d'information</option>
+                                    <option value="partenariat">Partenariat</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info-section">
+                        <div class="info-card">
+                            <h2><i class="fas fa-map-marker-alt"></i> Adresse</h2>
+                            <p>
+                                Faculté des Sciences de Tétouan<br>
+                                M'hannech II, B.P. 2121<br>
+                                93030 Tétouan, Maroc
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h2><i class="fas fa-users"></i> Responsables</h2>
+                            <div class="contact-person">
+                                <h3>Prof. Youssef Zaz</h3>
+                                <p>Responsable d'IWA</p>
+                                <a href="tel:+212662102167"><i class="fas fa-phone"></i> 06 62 10 21 67</a>
+                            </div>
+                            <div class="contact-person">
+                                <h3>Prof. Adil Enaanai</h3>
+                                <p>Co-responsable</p>
+                                <a href="tel:+212677205790"><i class="fas fa-phone"></i> 06 77 20 57 90</a>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h2><i class="fas fa-envelope"></i> Email</h2>
+                            <a href="mailto:iwa@uae.ac.ma">iwa@uae.ac.ma</a>
+                        </div>
+
+                        <div class="info-card">
+                            <h2><i class="fas fa-clock"></i> Horaires</h2>
+                            <p>Lundi - Vendredi : 9h00 - 17h00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-section">
+                    <h2><i class="fas fa-map"></i> Notre Localisation</h2>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.840977712742!2d-5.363187684747632!3d35.562825880220924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0b42dd8f34e6e3%3A0x2c118f6ebb79e220!2sFaculty%20of%20Sciences%20Tetouan!5e0!3m2!1sen!2sma!4v1647081148702!5m2!1sen!2sma"
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>&copy; 2024 IWA - Tous droits réservés</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://web.facebook.com/iwa.Maroc" class="social-link">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="mailto:iwa@uae.ac.ma" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
