@@ -130,115 +130,294 @@
           </div>
         </div>
       </nav>
-    <div class="text text-center">
-        <h2>Programme de la formation</h2>
-        <p>La formation est répartie sur 4 semestres et chaque semestre est constitué de 4 modules:</p>
+      <main class="flex-grow pt-20">
+        <!-- Hero Section -->
+        <section class="relative h-[300px] overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4" 
+                     alt="Background" 
+                     class="w-full h-full object-cover filter brightness-50">
+            </div>
+            <div class="relative container mx-auto px-4 h-full flex flex-col justify-center text-center">
+                <h1 class="text-5xl font-bold mb-4 text-white">Programme de la Formation</h1>
+                <p class="text-xl text-gray-200">La formation est répartie sur 4 semestres et chaque semestre est constitué de 4 modules</p>
+            </div>
+        </section>
 
-    </div>
-    <ul class="nav nav-pills m-3 d-flex flex-row justify-content-center " id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link btn active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Semestre 1</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Semestre 2</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Semestre 3</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled"
-                type="button" role="tab" aria-controls="pills-disabled" aria-selected="false">Semestre 4</button>
-        </li>
-    </ul>
-    <div class="tab-content m-5" id="pills-tabContent">
-        <div class="tab-pane m-5  fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
-            tabindex="0">
-            <ul>
-                <div class="mb-3"> <b class="fw-bold text-success ">M1 : Initiation web: HTML – CSS – PHP</b> <br>
-                    <p class="mt-2"> Ce module concerne l’exploration des différentes fonctionnalités du HTML et du CSS
-                        pour le développement des pages web statiques ainsi que l’initiation au PHP pour le
-                        développement des pages web dynamiques.
-                <div class=""> <b class="fw-bold  text-success">M2 : Développement Orienté Objet & Java-JEE (Spring
-                        Framework)</b> <br></p>
-                    <p class="mt-2">Programmation orientée Objet en Java
-                        Bases du langage Java
-                        Principes de la programmation objet et UML
-                        Spring framework – Spring Web – Spring Data – Spring Security – Microservices et Spring Cloud
-                    </p>
-                </li>
-                <div><b class="fw-bold  text-success"> M3 : Programmation Python pour le développement web</b><br>
-                    <p class="mt-2"> Initier l’étudiant à se familiariser avec les concepts de python et apprendre à
-                        concevoir et à créer et maintenir un site web dynamique en utilisant le Framework Django.
-                        M4 : Javascript avancé et Angular
-                        Respecter le modèle de développement en couches
-                        Maitriser le développement des composants réutilisables
-                        Communiquer avec l’application BackEnd
-                        Réutiliser les éléments Angular déjà développés</p>
+        <!-- Semester Tabs -->
+        <section class="py-12">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button class="semester-tab active bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors" onclick="showSemester(1)">
+                        Semestre 1
+                    </button>
+                    <button class="semester-tab bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transition-colors" onclick="showSemester(2)">
+                        Semestre 2
+                    </button>
+                    <button class="semester-tab bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transition-colors" onclick="showSemester(3)">
+                        Semestre 3
+                    </button>
+                    <button class="semester-tab bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transition-colors" onclick="showSemester(4)">
+                        Semestre 4
+                    </button>
                 </div>
-            </ul>
+
+                <!-- Semester Content -->
+                <div class="max-w-4xl mx-auto">
+                    <!-- Semester 1 -->
+                    <div id="semester1" class="semester-content block">
+                        <div class="space-y-8">
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-code mr-2"></i>
+                                    M1 : Initiation web: HTML – CSS – PHP
+                                </h3>
+                                <p class="text-gray-600">
+                                    Ce module concerne l'exploration des différentes fonctionnalités du HTML et du CSS pour le développement des pages web statiques ainsi que l'initiation au PHP pour le développement des pages web dynamiques.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fab fa-java mr-2"></i>
+                                    M2 : Développement Orienté Objet & Java-JEE
+                                </h3>
+                                <p class="text-gray-600">
+                                    Programmation orientée Objet en Java, bases du langage Java, principes de la programmation objet et UML, Spring framework – Spring Web – Spring Data – Spring Security – Microservices et Spring Cloud.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fab fa-python mr-2"></i>
+                                    M3 : Programmation Python pour le développement web
+                                </h3>
+                                <p class="text-gray-600">
+                                    Initiation aux concepts de Python et apprentissage de la conception, création et maintenance d'un site web dynamique avec le Framework Django.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fab fa-js mr-2"></i>
+                                    M4 : Javascript avancé et Angular
+                                </h3>
+                                <p class="text-gray-600">
+                                    Développement de composants réutilisables, communication avec l'application BackEnd, et réutilisation des éléments Angular.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semester 2 -->
+                    <div id="semester2" class="semester-content hidden">
+                        <div class="space-y-8">
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-database mr-2"></i>
+                                    M5 : Bases de données avancées
+                                </h3>
+                                <p class="text-gray-600">
+                                    Conception et optimisation des bases de données, SQL avancé, NoSQL, et gestion des données massives.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-shield-alt mr-2"></i>
+                                    M6 : Sécurité des applications web
+                                </h3>
+                                <p class="text-gray-600">
+                                    Principes de sécurité web, cryptographie, authentification, autorisation, et protection contre les attaques courantes.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-mobile-alt mr-2"></i>
+                                    M7 : Développement mobile
+                                </h3>
+                                <p class="text-gray-600">
+                                    Création d'applications mobiles natives et hybrides avec React Native et Flutter.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-cloud mr-2"></i>
+                                    M8 : Cloud Computing
+                                </h3>
+                                <p class="text-gray-600">
+                                    Introduction aux services cloud, déploiement d'applications, et gestion des infrastructures cloud.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semester 3 -->
+                    <div id="semester3" class="semester-content hidden">
+                        <div class="space-y-8">
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-project-diagram mr-2"></i>
+                                    M9 : Architecture des applications
+                                </h3>
+                                <p class="text-gray-600">
+                                    Patterns de conception, architecture microservices, et bonnes pratiques de développement.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-code-branch mr-2"></i>
+                                    M10 : DevOps et CI/CD
+                                </h3>
+                                <p class="text-gray-600">
+                                    Intégration continue, déploiement continu, et gestion des environnements de développement.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-robot mr-2"></i>
+                                    M11 : Intelligence Artificielle pour le Web
+                                </h3>
+                                <p class="text-gray-600">
+                                    Applications de l'IA dans le développement web, machine learning, et traitement du langage naturel.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-chart-line mr-2"></i>
+                                    M12 : Analyse de données web
+                                </h3>
+                                <p class="text-gray-600">
+                                    Collecte et analyse des données web, analytics, et visualisation des données.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semester 4 -->
+                    <div id="semester4" class="semester-content hidden">
+                        <div class="space-y-8">
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-tasks mr-2"></i>
+                                    M13 : Gestion de projet web
+                                </h3>
+                                <p class="text-gray-600">
+                                    Méthodologies agiles, gestion d'équipe, et planification de projets web.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-users mr-2"></i>
+                                    M14 : UX/UI Design avancé
+                                </h3>
+                                <p class="text-gray-600">
+                                    Conception d'interfaces utilisateur, expérience utilisateur, et design thinking.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-graduation-cap mr-2"></i>
+                                    M15 : Projet de fin d'études
+                                </h3>
+                                <p class="text-gray-600">
+                                    Réalisation d'un projet web complet en utilisant les technologies et méthodologies apprises.
+                                </p>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                                <h3 class="text-xl font-bold text-emerald-600 mb-4">
+                                    <i class="fas fa-briefcase mr-2"></i>
+                                    M16 : Stage professionnel
+                                </h3>
+                                <p class="text-gray-600">
+                                    Stage en entreprise pour mettre en pratique les compétences acquises dans un environnement professionnel.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function showSemester(semesterNum) {
+            // Hide all semester contents
+            document.querySelectorAll('.semester-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+            });
+            
+            // Show selected semester content
+            const selectedSemester = document.getElementById(`semester${semesterNum}`);
+            selectedSemester.classList.remove('hidden');
+            selectedSemester.classList.add('block');
+            
+            // Update tab styles
+            document.querySelectorAll('.semester-tab').forEach(tab => {
+                tab.classList.remove('bg-emerald-600', 'text-white');
+                tab.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            
+            // Style active tab
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-emerald-600', 'text-white');
+        }
+    </script>
+     <footer class="bg-emerald-600 text-white py-12">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold mb-4">IWA Formation</h3>
+              <p class="text-sm">Formation supérieure en Ingénierie du Web Avancé</p>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Liens Rapides</h4>
+              <ul class="space-y-2">
+                <li><a href="/objectifs" class="hover:text-emerald-200 transition-colors">Objectifs</a></li>
+                <li><a href="/programme" class="hover:text-emerald-200 transition-colors">Programme</a></li>
+                <li><a href="/preinscription" class="hover:text-emerald-200 transition-colors">Préinscription</a></li>
+                <li><a href="/contact" class="hover:text-emerald-200 transition-colors">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Nous Contacter</h4>
+              <p class="text-sm mb-2">123 Rue de l'Innovation</p>
+              <p class="text-sm mb-2">75000 Paris, France</p>
+              <p class="text-sm mb-2">Tél: +33 1 23 45 67 89</p>
+              <p class="text-sm">Email: contact@iwa-formation.fr</p>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Suivez-nous</h4>
+              <div class="flex space-x-4">
+                <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+                  <i class="fab fa-facebook-f text-2xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+                  <i class="fab fa-twitter text-2xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+                  <i class="fab fa-linkedin-in text-2xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+                  <i class="fab fa-instagram text-2xl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 pt-8 border-t border-emerald-500 text-center">
+            <p class="text-sm">&copy; 2023 IWA Formation. Tous droits réservés.</p>
+          </div>
         </div>
-        <div class="tab-pane m-5 fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
-            tabindex="0">
-            <ul>
-                <div><b class=" text-success">M5 : React JS, React Native et PWA</b><br>
-                    Le module React commence par reprendre les fondamentaux de JavaScript utiles au framework, ensuite
-                    les bases de React, les composants, Redux, le système de centralisation des données et des actions,
-                    le routage, JSX, puis les spécificités de React Native.
-                </div>
-                <div><b class=" text-success">M6 : Développement des sites web avec les CMS</b><br>
-                    Développement des sites web informationnels et boutiques en ligne par l’utilisation des outils
-                    élaborés : CMS (Content Management System).
-                </div>
-                <div><b class=" text-success">M7 : Cloud Computing</b><br>
-                    Ce module est focalisé sur la technologie Cloud Computing. Il fournit une introduction et la
-                    définition de domaine, il présente les caractéristiques essentielles et les principaux avantages du
-                    Cloud Computing. Il décrit également les principaux modèles de services et les principaux modèles de
-                    déploiement.
-                </div>
-                <div><b class=" text-success">M8 : Base de données orientées Web</b><br>
-                    Ce module concerne les bases de données dans les environnements web. De leur modélisation à leur
-                    traitement en passant par les questions de standards qui orientent le choix entre les bases de
-                    données relationnelles et les bases de données NoSql.
-                </div>
-            </ul>
-        </div>
-        <div class="tab-pane m-5 fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
-            tabindex="0">
-            <ul>
-                <div><b class=" text-success">M9 : Internet of Things</b><br>
-                    Programmation mobile et Web, Internet des objets (IoT).
-                </div>
-                <div><b class=" text-success">M10 : ServiceNow</b><br>
-                    ServiceNow fournit une solution « Software as a service » qui centralise l’ensemble des processus de
-                    l’entreprise et transforme les anciennes méthodes de travail en workflows numériques. Ce module
-                    couvre tout ce qui est nécessaire pour maîtriser les scripts sur la plateforme ServiceNow, ainsi que
-                    le fonctionnement des API ServiceNow.
-                </div>
-                <div><b class=" text-success">M11 : Infographie pour le web</b><br>
-                    Photoshop et Illustrator sont des logiciels incontournables pour la conception et la réalisation
-                    d’interfaces web répondant à des critères techniques spécifiques. Dans ce module, nous abordons la
-                    préparation des logos, des visuels et des interfaces graphiques, ainsi que la réalisation des
-                    bannières publicitaires pour le web et le mobile et la préparation des chartes graphiques des sites
-                    web.
-                </div>
-                <div><b class=" text-success">M12 : Soft Skills – Gestion de Projets – Méthodes de Test</b><br>
-                    Soft-Skills : Compétences sociales, personnelles et méthodologiques. Gestion de Projet :
-                    Contraintes, Intervenants, phases de gestion, cycle de vie et méthodes de gestion. Méthodes de Test.
-                </div>
-            </ul>
-        </div>
-        <div class="tab-pane m-5 fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab"
-            tabindex="0">
-            <p><b class=" text-success">Stage professionnel</b><br>
-                Un stage professionnel de 4 mois, avec un mémoire à préparer et une soutenance devant un jury. En raison
-                du caractère professionnel de ce DCESS, le stage en entreprise occupe une place importante dans cette
-                formation et l’évaluation des apprenants.
-            </p>
-        </div>
-    </div>
+      </footer>
 
 
 </body>

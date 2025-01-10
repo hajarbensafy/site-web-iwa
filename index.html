@@ -314,49 +314,149 @@
         </a>
       </div>
     </div>
-    <!-- Services Accordion Section -->
+ 
+<!-- Services Section -->
 <div class="bg-white py-16">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12 title-font">Nos Services</h2>
-    <div class="max-w-3xl mx-auto">
-      <div class="accordion" id="servicesAccordion">
-        <!-- Technology Consulting -->
-        <div class="mb-4 border border-gray-200 rounded-lg">
-          <h2 class="mb-0" id="headingOne">
-            <button class="group relative flex w-full items-center rounded-t-lg border-0 bg-white px-5 py-4 text-left text-gray-800 transition hover:bg-gray-50" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <span class="font-semibold">Technology Consulting</span>
-              <span class="ml-auto transform transition-transform duration-200 group-aria-expanded:rotate-180">
-                <i class="fas fa-chevron-down"></i>
-              </span>
+    <div class="flex flex-col md:flex-row gap-8 max-w-7xl mx-auto">
+      <!-- Côté gauche - Carrousel -->
+      <div class="md:w-1/2 relative">
+        <div class="relative h-[400px] rounded-lg overflow-hidden">
+          <!-- Éléments du carrousel -->
+          <div class="carousel-container relative h-full">
+            <div class="carousel-item absolute w-full h-full transition-opacity duration-500 opacity-100">
+              <div class="bg-gradient-to-r from-blue-400 to-blue-600">
+                <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3" alt="Consulting 1" class="w-full h-[500px] object-cover mix-blend-overlay">
+              </div>
+            </div>
+            <div class="carousel-item absolute w-full h-full transition-opacity duration-500 opacity-0">
+              <div class="bg-gradient-to-r from-blue-400 to-blue-600">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" alt="Consulting 2" class="w-full h-[500px] object-cover mix-blend-overlay">
+              </div>
+            </div>
+            <div class="carousel-item absolute w-full h-full transition-opacity duration-500 opacity-0">
+              <div class="bg-gradient-to-r from-blue-400 to-blue-600">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0" alt="Consulting 3" class="w-full h-[500px] object-cover mix-blend-overlay">
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation du carrousel -->
+          <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2" onclick="moveCarousel(-1)">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2" onclick="moveCarousel(1)">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <!-- Points du carrousel -->
+        <div class="flex justify-center mt-4 gap-2">
+          <button class="carousel-dot w-2 h-2 rounded-full bg-blue-600" onclick="goToSlide(0)"></button>
+          <button class="carousel-dot w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide(1)"></button>
+          <button class="carousel-dot w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide(2)"></button>
+        </div>
+      </div>
+
+      <!-- Côté droit - Boutons interactifs -->
+      <div class="md:w-1/2">
+        <h2 class="text-3xl font-bold text-center mb-12 title-font">Services de Conseil</h2>
+        <p class="text-gray-600 mb-8">Nous proposons une variété de services de conseil pour aider les entreprises à croître et à améliorer leurs performances.</p>
+
+        <!-- Boutons interactifs -->
+        <div class="space-y-4">
+          <div class="border border-gray-200 rounded-lg">
+            <button class="service-btn w-full px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors flex justify-between items-center" onclick="toggleService('tech')">
+              <span class="font-semibold text-gray-800">Conseil en Technologie</span>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
             </button>
-          </h2>
-          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-bs-parent="#servicesAccordion">
-            <div class="px-5 py-4 text-gray-600">
-              Providing expert guidance on technology strategy, implementation, and innovation.
+            <div id="tech-content" class="hidden px-4 py-3 bg-white">
+              <p class="text-gray-600">Des conseils experts sur la stratégie technologique, la transformation numérique et le développement de feuilles de route innovantes. Nous aidons les entreprises à exploiter les technologies de pointe de manière efficace.</p>
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded-lg">
+            <button class="service-btn w-full px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors flex justify-between items-center" onclick="toggleService('software')">
+              <span class="font-semibold text-gray-800">Développement de Logiciels sur Mesure</span>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="software-content" class="hidden px-4 py-3 bg-white">
+              <p class="text-gray-600">Des services de développement logiciel sur mesure pour répondre aux besoins spécifiques de votre entreprise. De la planification au déploiement, nous garantissons des solutions de qualité et évolutives.</p>
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded-lg">
+            <button class="service-btn w-full px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors flex justify-between items-center" onclick="toggleService('project')">
+              <span class="font-semibold text-gray-800">Gestion de Projets</span>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="project-content" class="hidden px-4 py-3 bg-white">
+              <p class="text-gray-600">Des services professionnels de gestion de projets pour assurer la réussite de vos initiatives. Nous nous concentrons sur les délais, la qualité et une utilisation efficace des ressources.</p>
             </div>
           </div>
         </div>
-
-        <!-- Custom Software Development -->
-        <div class="mb-4 border border-gray-200 rounded-lg">
-          <h2 class="mb-0" id="headingTwo">
-            <button class="group relative flex w-full items-center rounded-t-lg border-0 bg-white px-5 py-4 text-left text-gray-800 transition hover:bg-gray-50" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              <span class="font-semibold">Custom Software Development</span>
-              <span class="ml-auto transform transition-transform duration-200 group-aria-expanded:rotate-180">
-                <i class="fas fa-chevron-down"></i>
-              </span>
-            </button>
-          </h2>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#servicesAccordion">
-            <div class="px-5 py-4 text-gray-600">
-              Building tailored software solutions to meet specific business needs and challenges.
-            </div>
-          </div>
-        </div>     
       </div>
     </div>
   </div>
 </div>
+
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-item');
+const dots = document.querySelectorAll('.carousel-dot');
+
+function showSlide(n) {
+  slides.forEach(slide => slide.style.opacity = '0');
+  dots.forEach(dot => dot.classList.replace('bg-blue-600', 'bg-gray-300'));
+  
+  slides[n].style.opacity = '1';
+  dots[n].classList.replace('bg-gray-300', 'bg-blue-600');
+}
+
+function moveCarousel(direction) {
+  currentSlide = (currentSlide + direction + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+function goToSlide(n) {
+  currentSlide = n;
+  showSlide(currentSlide);
+}
+
+function toggleService(id) {
+  const content = document.getElementById(`${id}-content`);
+  const button = content.previousElementSibling;
+  const arrow = button.querySelector('svg');
+  
+  // Hide all other contents
+  document.querySelectorAll('[id$="-content"]').forEach(el => {
+    if (el !== content) {
+      el.classList.add('hidden');
+      el.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
+    }
+  });
+  
+  // Toggle current content
+  content.classList.toggle('hidden');
+  arrow.classList.toggle('rotate-180');
+}
+
+// Auto-advance carousel
+setInterval(() => moveCarousel(1), 5000);
+
+// Initialize first slide
+showSlide(0);
+</script>
 
 <!-- Partners Section -->
 <div class="bg-gray-50 py-16">
@@ -392,8 +492,55 @@
     </div>
   </div>
 </div>
-  </main>
 
+  </main>
+  <footer class="bg-emerald-600 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-4">IWA Formation</h3>
+          <p class="text-sm">Formation supérieure en Ingénierie du Web Avancé</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Liens Rapides</h4>
+          <ul class="space-y-2">
+            <li><a href="/objectifs" class="hover:text-emerald-200 transition-colors">Objectifs</a></li>
+            <li><a href="/programme" class="hover:text-emerald-200 transition-colors">Programme</a></li>
+            <li><a href="/preinscription" class="hover:text-emerald-200 transition-colors">Préinscription</a></li>
+            <li><a href="/contact" class="hover:text-emerald-200 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Nous Contacter</h4>
+          <p class="text-sm mb-2">123 Rue de l'Innovation</p>
+          <p class="text-sm mb-2">75000 Paris, France</p>
+          <p class="text-sm mb-2">Tél: +33 1 23 45 67 89</p>
+          <p class="text-sm">Email: contact@iwa-formation.fr</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Suivez-nous</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+              <i class="fab fa-facebook-f text-2xl"></i>
+            </a>
+            <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+              <i class="fab fa-twitter text-2xl"></i>
+            </a>
+            <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+              <i class="fab fa-linkedin-in text-2xl"></i>
+            </a>
+            <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+              <i class="fab fa-instagram text-2xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-emerald-500 text-center">
+        <p class="text-sm">&copy; 2023 IWA Formation. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+  
 </body>
 
 </html>
