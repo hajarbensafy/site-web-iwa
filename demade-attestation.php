@@ -43,8 +43,8 @@ $types = $pdo->query("SELECT * FROM typeattestation")->fetchAll(PDO::FETCH_ASSOC
     <nav class="bg-white/90 backdrop-blur-md shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0">
-                    <img src="./public/images/image12.png" alt="Logo" class="h-[12vh]">
+            <div class="flex-shrink-0">
+                    <img src="./public/images/Ingénierie_du_Web_Avancé__3_-removebg-preview (1).png" alt="IWA Logo" class="h-[18vh]">
                 </div>
                 <div class="hidden md:flex space-x-6">
                     <a href="./dashboard_etudiant.php" class="flex items-center px-4 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-lg font-medium transition-all duration-300">

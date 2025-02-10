@@ -1,40 +1,63 @@
 <?php
-session_start();
+// Connexion à la base de données
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "IWA_db"; // Remplacez par le nom de votre base de données
 
-// Predefined login credentials (for demo purposes, replace with real authentication in production)
-$valid_username = 'admin';
-$valid_password = 'admin'; // In a real app, hash and verify passwords
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// Handle login form submission
-if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+// Vérification de la connexion
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Simple validation for demo purposes
-    if ($username === $valid_username && $password === $valid_password) {
-        // Set session variable to indicate that the user is logged in
-        $_SESSION['isAdminLoggedIn'] = true;
-        header("Location: ./dashboard.php"); // Redirect to the dashboard page
-        exit;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les données du formulaire
+    $username_or_email = $_POST['username_or_email'];
+    $motdepasse = $_POST['motdepasse'];
+
+    // Vérifier si l'utilisateur est un admin
+    $sql_admin = "SELECT * FROM admins WHERE username = ? AND password = ?";
+    $stmt = $conn->prepare($sql_admin);
+    $stmt->bind_param("ss", $username_or_email, $motdepasse);
+    $stmt->execute();
+    $result_admin = $stmt->get_result();
+
+    if ($result_admin->num_rows > 0) {
+        // L'utilisateur est un admin, redirection vers dashboard.php
+        header("Location: dashboard.php");
+        exit();
+    }
+
+    // Vérifier si l'utilisateur est un étudiant
+    $sql_etudiant = "SELECT * FROM etudiant WHERE Email = ? AND MotDePasse = ?";
+    $stmt = $conn->prepare($sql_etudiant);
+    $stmt->bind_param("ss", $username_or_email, $motdepasse);
+    $stmt->execute();
+    $result_etudiant = $stmt->get_result();
+
+    if ($result_etudiant->num_rows > 0) {
+        // L'utilisateur est un étudiant, redirection vers dashboard_etudiant.php
+        header("Location: dashboard_etudiant.php");
+        exit();
     } else {
-        $error_message = "Identifiants incorrects";
+        // L'utilisateur n'est ni admin ni étudiant
+        echo "Identifiants incorrects";
     }
 }
 
-// Redirect if already logged in
-if (isset($_SESSION['isAdminLoggedIn']) && $_SESSION['isAdminLoggedIn'] === true) {
-    header("Location: ./dashboard.php");
-    exit;
-}
+$conn->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="h-full bg-gray-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administration - Connexion</title>
+    <title>Page de Connexion - IWA</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -57,46 +80,42 @@ if (isset($_SESSION['isAdminLoggedIn']) && $_SESSION['isAdminLoggedIn'] === true
             }
         }
     </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
-<body class="bg-custom-green-50 flex justify-center items-center min-h-screen">
-
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+<body class="h-full bg-gradient-to-br from-custom-green-50 to-custom-green-100 flex justify-center items-center p-4">
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md transition-all duration-300 hover:shadow-xl">
         <div class="text-center mb-8">
-            <img src="../public/images/image1.png" alt="Logo" class="mx-auto mb-6 h-24">
-            <h1 class="text-3xl font-bold text-custom-green-800">Espace Administrateur</h1>
-            <p class="text-sm text-custom-green-600 mt-2">Connectez-vous à votre espace administrateur</p>
+            <img src="./public/images/Ingénierie_du_Web_Avancé__3_-removebg-preview (1).png" alt="Logo" class="mx-auto mb-4 w-32 h-auto">
+            <h1 class="text-3xl font-bold text-custom-green-800 mb-2">Connexion</h1>
+            <p class="text-sm text-custom-green-600">Connectez-vous pour accéder à votre espace</p>
         </div>
-
-        <!-- Show error message if login fails -->
-        <?php if (isset($error_message)): ?>
-            <div class="bg-red-100 text-red-700 p-4 rounded-lg mb-6">
-                <strong>Erreur:</strong> <?php echo $error_message; ?>
+        <form method="POST" action="" class="space-y-6">
+            <div>
+                <label for="username_or_email" class="block text-sm font-medium text-custom-green-700 mb-1">Nom d'utilisateur ou Email</label>
+                <input type="text" id="username_or_email" name="username_or_email" required
+                    class="w-full px-4 py-2 border border-custom-green-300 rounded-lg focus:ring-2 focus:ring-custom-green-500 focus:border-transparent transition duration-200 outline-none"
+                    placeholder="Entrez votre nom d'utilisateur ou email">
             </div>
-        <?php endif; ?>
-
-        <!-- Login Form -->
-        <form action="login.php" method="POST" class="space-y-6">
-            <div class="form-group">
-                <label for="username" class="block text-sm font-medium text-custom-green-700 mb-1">Identifiant</label>
-                <input type="text" name="username" id="username" class="w-full p-3 border border-custom-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-green-500" required>
+            <div>
+                <label for="motdepasse" class="block text-sm font-medium text-custom-green-700 mb-1">Mot de passe</label>
+                <input type="password" id="motdepasse" name="motdepasse" required
+                    class="w-full px-4 py-2 border border-custom-green-300 rounded-lg focus:ring-2 focus:ring-custom-green-500 focus:border-transparent transition duration-200 outline-none"
+                    placeholder="Entrez votre mot de passe">
             </div>
-
-            <div class="form-group">
-                <label for="password" class="block text-sm font-medium text-custom-green-700 mb-1">Mot de passe</label>
-                <input type="password" name="password" id="password" class="w-full p-3 border border-custom-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-green-500" required>
+            <div>
+                <button type="submit" 
+                    class="w-full py-3 bg-custom-green-600 text-white font-semibold rounded-lg hover:bg-custom-green-700 focus:outline-none focus:ring-2 focus:ring-custom-green-500 focus:ring-offset-2 transition duration-300 transform hover:scale-105">
+                    Se connecter
+                </button>
             </div>
-
-            <button type="submit" name="login" class="w-full py-3 bg-custom-green-600 text-white font-semibold rounded-lg hover:bg-custom-green-700 transition duration-300">
-                Se connecter
-            </button>
         </form>
-
-        <!-- Footer Link -->
-        <div class="mt-8 text-center">
-            <a href="./index.php" class="text-custom-green-600 hover:text-custom-green-800 hover:underline">Retour au site</a>
+        <div class="mt-6 text-center">
+            <a href="#" class="text-sm text-custom-green-600 hover:text-custom-green-800 transition duration-200">Mot de passe oublié ?</a>
         </div>
     </div>
-
 </body>
 </html>
-

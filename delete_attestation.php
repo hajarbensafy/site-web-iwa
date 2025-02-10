@@ -2,12 +2,12 @@
 require_once "config.php";
 
 // Get the attestation reference from the URL
-$ref = $_GET['ref'];
+$ref = $_GET['RefAtt'];
 
 // Fetch the attestation details from the database
-$sql = "SELECT a.*, e.nom, e.prenom 
+$sql = "SELECT a.*, e.Nom, e.Prenom 
         FROM attestation a 
-        INNER JOIN etudiant e ON a.IDE = e.IDE 
+        INNER JOIN etudiant e ON a.IDEt = e.IDEt 
         WHERE a.RefAtt = '$ref'";
 
 $result = mysqli_query($link, $sql);
@@ -63,9 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <p class="text-lg text-gray-700">Êtes-vous sûr de vouloir supprimer cette attestation ?</p>
                 <div class="mt-6 space-y-4">
                     <p><strong>Référence:</strong> <?php echo htmlspecialchars($row['RefAtt']); ?></p>
-                    <p><strong>Étudiant:</strong> <?php echo htmlspecialchars($row['nom'] . " " . $row['prenom']); ?></p>
-                    <p><strong>Date de Demande:</strong> <?php echo htmlspecialchars($row['dateDem']); ?></p>
-                    <p><strong>Type:</strong> <?php echo htmlspecialchars($row['Idtype']); ?></p>
+                    <p><strong>Étudiant:</strong> <?php echo htmlspecialchars($row['Nom'] . " " . $row['Prenom']); ?></p>
+                    <p><strong>Date de Demande:</strong> <?php echo htmlspecialchars($row['DateDem']); ?></p>
+                    <p><strong>Type:</strong> <?php echo htmlspecialchars($row['IDType']); ?></p>
                     <p><strong>Année:</strong> <?php echo htmlspecialchars($row['Annee']); ?></p>
                 </div>
             </div>

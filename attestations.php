@@ -12,8 +12,8 @@
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0">
-                    <img src="./public/images/image12.png" alt="IWA Logo" class="h-[12vh]">
+            <div class="flex-shrink-0">
+                    <img src="./public/images/Ingénierie_du_Web_Avancé__3_-removebg-preview (1).png" alt="IWA Logo" class="h-[18vh]">
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="./dashboard.php" class="flex items-center px-4 py-2 text-emerald-600 bg-emerald-50 rounded-lg">

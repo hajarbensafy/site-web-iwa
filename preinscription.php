@@ -1,213 +1,324 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IWA Formation - Préinscription</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Préinscription - IWA Formation</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        'custom-green': {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            200: '#bbf7d0',
-                            300: '#86efac',
-                            400: '#4ade80',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                            800: '#166534',
-                            900: '#14532d',
+                    animation: {
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
                         },
+                        'pulse': {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: .5 }
+                        }
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-gradient-to-br from-custom-green-50 via-custom-green-100 to-custom-green-200 min-h-screen">
-    <!-- Header avec Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full z-50 ">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <img src="./public/images/image12.png" alt="IWA Logo" class="h-[12vh]">
+
+<body>
+  
+<nav class="bg-white shadow-lg fixed w-full z-50 ">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+      <div class="flex-shrink-0">
+                    <img src="./public/images/Ingénierie_du_Web_Avancé__3_-removebg-preview (1).png" alt="IWA Logo" class="h-[18vh]">
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <div class="relative group">
-                        <a href="./index.php" class="text-gray-700 hover:text-custom-green-600 px-3 py-2 block rounded-md font-medium transition-colors">Accueil</a>
-                    </div>
-                    <div class="relative group">
-                        <a href="#" class=" block hover:text-custom-green-600 px-3 py-2 rounded-md font-medium transition-colors">
-                            Formation IWA
-                            <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </a>
-                        <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-md py-2 animate-fade-in">
-                            <a href="./objectifs.php" class="block px-4 py-2 text-gray-700 hover:bg-custom-green-50">Objectifs</a>
-                            <a href="./publicvisé.php" class="block px-4 py-2 text-gray-700 hover:bg-custom-green-50">Public visé</a>
-                            <a href="./debouches.php" class="block px-4 py-2 text-gray-700 hover:bg-custom-green-50">Débouchés</a>
-                            <a href="./programme.php" class="block px-4 py-2 text-gray-700 hover:bg-custom-green-50">Programme</a>
-                            <a href="./preinscription.php" class="block px-4 py-2 text-gray-700 hover:bg-custom-green-50">Préinscription</a>
-                        </div>
-                    </div>
-                    <a href="./events.php" class="text-gray-700 hover:text-custom-green-600 px-3 py-2 rounded-md font-medium transition-colors">Événements</a>
-                   
-                    <a href="./contact.php" class="text-gray-700 hover:text-custom-green-600 px-3 py-2 rounded-md font-medium transition-colors">Contact</a>
-                </div>
-                <div class="relative group">
-                    <button class="bg-custom-green-600 text-white px-6 py-2 rounded-md hover:bg-custom-green-700 transition-colors">
-                        Connecter
-                        <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="absolute hidden group-hover:block w-48 right-0 bg-white shadow-lg rounded-md py-2 animate-fade-in">
-                        <a href="./login.php" class="block px-4 py-2 text-gray-700 hover:bg-custom-green-50">Administrateur</a>
-                        <a href="./login-etudiant.php" class="block px-4 py-2 text-gray-700 hover:bg-custom-green-50">Étudiants</a>
-                    </div>
-                </div>
+
+        <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
+          <a href="index.php
+          "
+            class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+            Accueil
+          </a>
+
+          <div class="relative group">
+            <button
+              class="text-gray-700 group-hover:text-emerald-600 px-3 py-2 text-md font-medium inline-flex items-center transition-colors">
+              Formation IWA
+              <svg class="ml-2 h-4 w-4 transition-transform group-hover:rotate-180 " fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <div
+              class="absolute left-0  w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block transition-all duration-200">
+              <div class="py-1">
+                <a href="./objectifs.php
+                "
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                  Objectifs
+                </a>
+                <a href="./programme.php
+                "
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                  Programme
+                </a>
+                <a href="./preinscription.php
+                "
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                  Préinscription
+                </a>
+              </div>
             </div>
+          </div>
+
+          <a href="./events.php"
+            class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+            Événements
+          </a>
+
+         
+
+          <a href="./club.php"
+            class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+            AI-IoT Club
+          </a>
+
+          <a href="./contact.php"
+            class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+            Contact
+          </a>
+
+       
+              <a href="./login.php" class="block px-4 py-2 text-gray-700 hover:bg-green-50">Connecter</a>
+      </div>
+
+        <div class="flex items-center sm:hidden">
+          <button type="button"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-emerald-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <div class="container mx-auto px-6 py-24 ">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-custom-green-900 mb-4">Préinscription</h1>
-            <p class="text-custom-green-700">Commencez votre parcours vers l'excellence numérique</p>
-        </div>
-
-        <!-- Formulaire -->
-        <div class="max-w-4xl mx-auto">
-            <form class="bg-white shadow-2xl rounded-2xl p-8 space-y-6 backdrop-blur-sm bg-white/90">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Nom -->
-                    <div class="space-y-2">
-                        <label class="block text-sm font-medium text-custom-green-900">Nom complet *</label>
-                        <input type="text" required
-                            class="w-full px-4 py-2 border border-custom-green-200 rounded-lg focus:ring-2 focus:ring-custom-green-500 focus:border-custom-green-500 transition">
-                    </div>
-
-                    <!-- Email -->
-                    <div class="space-y-2">
-                        <label class="block text-sm font-medium text-custom-green-900">Email *</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-custom-green-500">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <input type="email" required
-                                class="w-full pl-10 pr-4 py-2 border border-custom-green-200 rounded-lg focus:ring-2 focus:ring-custom-green-500 focus:border-custom-green-500 transition">
-                        </div>
-                    </div>
-
-                    <!-- Téléphone -->
-                    <div class="space-y-2">
-                        <label class="block text-sm font-medium text-custom-green-900">Téléphone *</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-custom-green-500">
-                                <i class="fas fa-phone"></i>
-                            </span>
-                            <input type="tel" required
-                                class="w-full pl-10 pr-4 py-2 border border-custom-green-200 rounded-lg focus:ring-2 focus:ring-custom-green-500 focus:border-custom-green-500 transition">
-                        </div>
-                    </div>
-
-                    <!-- Niveau d'études -->
-                    <div class="space-y-2">
-                        <label class="block text-sm font-medium text-custom-green-900">Niveau d'études *</label>
-                        <select required
-                            class="w-full px-4 py-2 border border-custom-green-200 rounded-lg focus:ring-2 focus:ring-custom-green-500 focus:border-custom-green-500 transition">
-                            <option value="">Sélectionnez votre niveau</option>
-                            <option value="bac">Baccalauréat</option>
-                            <option value="bac+2">Bac+2</option>
-                            <option value="bac+3">Bac+3</option>
-                            <option value="bac+5">Bac+5 ou plus</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Formation -->
-                <div class="space-y-2">
-                    <label class="block text-sm font-medium text-custom-green-900">Formation souhaitée *</label>
-                    <select required
-                        class="w-full px-4 py-2 border border-custom-green-200 rounded-lg focus:ring-2 focus:ring-custom-green-500 focus:border-custom-green-500 transition">
-                        <option value="">Sélectionnez une formation</option>
-                        <option value="dev_web">Développement Web</option>
-                        <option value="data_science">Data Science</option>
-                        <option value="cyber_security">Cybersécurité</option>
-                    </select>
-                </div>
-
-                <!-- Motivation -->
-                <div class="space-y-2">
-                    <label class="block text-sm font-medium text-custom-green-900">Lettre de motivation *</label>
-                    <textarea required rows="5"
-                        class="w-full px-4 py-2 border border-custom-green-200 rounded-lg focus:ring-2 focus:ring-custom-green-500 focus:border-custom-green-500 transition"></textarea>
-                </div>
-
-                <!-- Bouton Submit -->
-                <button type="submit"
-                    class="w-full bg-gradient-to-r from-custom-green-600 to-custom-green-800 text-white py-3 px-6 rounded-lg hover:from-custom-green-700 hover:to-custom-green-900 transition duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-custom-green-500 focus:ring-offset-2 shadow-lg">
-                    <i class="fas fa-paper-plane mr-2"></i>
-                    Envoyer ma candidature
-                </button>
-            </form>
-        </div>
+      </div>
     </div>
+  </nav>
+    <main>
+       
 
-    <!-- Footer -->
-    <footer class="bg-custom-green-200 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                    <img src="./public/images/image12.png" alt="IWA Logo" class="h-14 mb-4">
-                    <p class="text-black text-lg">Formation supérieure en ingénierie web avancée</p>
+        <div class="min-h-screen bg-gradient-to-br from-green-100 via-emerald-200 to-teal-300 py-12 px-4 sm:px-6 lg:px-8 animate-gradient-x pt-24">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mt-8">
+                   
                 </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4 text-custom-green-800">Contact</h3>
-                    <div class="space-y-2 ">
-                        <a href="mailto:iwa@uae.ac.ma" class="text-black hover:text-white transition-colors flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-custom-green-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                            </svg>
-                            iwa@uae.ac.ma
-                        </a>
-                        <p class="text-black flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-custom-green-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                            </svg>
-                            06 62 10 21 67
+                <div class="overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-all duration-300 bg-white bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-lg">
+                    <div class="text-center bg-gradient-to-r from-green-500 to-emerald-600 text-white p-8 relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-20">
+                            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYwIiBoZWlnaHQ9IjU2MCIgdmlld0JveD0iMCAwIDU2MCA1NjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjgwIDI4MCkiIHN0cm9rZS13aWR0aD0iLjUiIHN0cm9rZT0iI0ZGRiI+CiAgICA8Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuMSIgY3g9IjAiIGN5PSIwIiByPSIxMCIvPgogICAgPGNpcmNsZSBzdHJva2Utb3BhY2l0eT0iLjIiIGN4PSIwIiBjeT0iMCIgcj0iMjAiLz4KICAgIDxjaXJjbGUgc3Ryb2tlLW9wYWNpdHk9Ii4zIiBjeD0iMCIgY3k9IjAiIHI9IjQwIi8+CiAgICA8Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuNCIgY3g9IjAiIGN5PSIwIiByPSI4MCIvPgogICAgPGNpcmNsZSBzdHJva2Utb3BhY2l0eT0iLjUiIGN4PSIwIiBjeT0iMCIgcj0iMTYwIi8+CiAgICA8Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuNiIgY3g9IjAiIGN5PSIwIiByPSIzMjAiLz4KICA8L2c+Cjwvc3ZnPg==')]"></div>
+                        </div>
+                        <h2 class="text-4xl font-extrabold mb-2 relative z-10">
+                            Formulaire de Préinscription
+                        </h2>
+                        <p class="text-xl text-green-100 relative z-10">
+                            Votre parcours vers l'excellence commence ici
                         </p>
                     </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4 text-custom-green-800">Restez connecté</h3>
-                    <form class="space-y-4">
-                        <div>
-                            <input type="email" placeholder="Votre email" class="w-full px-4 py-2 rounded-lg bg-white focus:outline-none focus:border-custom-green-500">
-                        </div>
-                        <button type="submit" class="bg-custom-green-600 text-white px-6 py-2 rounded-md hover:bg-custom-green-700 transition-colors">
-                            S'inscrire
-                        </button>
-                    </form>
+                    <div class="p-8">
+                        <form id="preinscriptionForm" class="space-y-8">
+                            <div class="space-y-6">
+                                <div class="relative">
+                                    <label for="nom" class="text-lg font-semibold text-green-800 block mb-2">Nom complet</label>
+                                    <div class="relative">
+                                        <input
+                                            id="nom"
+                                            name="nom"
+                                            type="text"
+                                            required
+                                            class="w-full mt-1 pl-10 py-2 bg-white bg-opacity-70 backdrop-blur-sm border-green-300 focus:border-green-500 focus:ring-green-500 rounded-md"
+                                            placeholder="Entrez votre nom complet"
+                                        >
+                                        <i class="fas fa-leaf absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500"></i>
+                                    </div>
+                                </div>
+        
+                                <div class="relative">
+                                    <label for="email" class="text-lg font-semibold text-green-800 block mb-2">Adresse email</label>
+                                    <div class="relative">
+                                        <input
+                                            id="email"
+                                            name="email"
+                                            type="email"
+                                            required
+                                            class="w-full mt-1 pl-10 py-2 bg-white bg-opacity-70 backdrop-blur-sm border-green-300 focus:border-green-500 focus:ring-green-500 rounded-md"
+                                            placeholder="vous@exemple.com"
+                                        >
+                                        <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500"></i>
+                                    </div>
+                                </div>
+        
+                                <div class="relative">
+                                    <label for="telephone" class="text-lg font-semibold text-green-800 block mb-2">Numéro de téléphone</label>
+                                    <div class="relative">
+                                        <input
+                                            id="telephone"
+                                            name="telephone"
+                                            type="tel"
+                                            required
+                                            class="w-full mt-1 pl-10 py-2 bg-white bg-opacity-70 backdrop-blur-sm border-green-300 focus:border-green-500 focus:ring-green-500 rounded-md"
+                                            placeholder="06 XX XX XX XX"
+                                        >
+                                        <i class="fas fa-phone absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500"></i>
+                                    </div>
+                                </div>
+        
+                                <div>
+                                    <label for="niveau" class="text-lg font-semibold text-green-800 block mb-2">Niveau d'études actuel</label>
+                                    <select
+                                        id="niveau"
+                                        name="niveau"
+                                        required
+                                        class="w-full mt-1 py-2 bg-white bg-opacity-70 backdrop-blur-sm border-green-300 focus:border-green-500 focus:ring-green-500 rounded-md"
+                                    >
+                                        <option value="">Sélectionnez votre niveau</option>
+                                        <option value="bac">Baccalauréat</option>
+                                        <option value="bac+2">Bac+2</option>
+                                        <option value="bac+3">Bac+3</option>
+                                        <option value="bac+5">Bac+5 ou plus</option>
+                                    </select>
+                                </div>
+        
+                                <div>
+                                    <label for="formation" class="text-lg font-semibold text-green-800 block mb-2">Formation souhaitée</label>
+                                    <select
+                                        id="formation"
+                                        name="formation"
+                                        required
+                                        class="w-full mt-1 py-2 bg-white bg-opacity-70 backdrop-blur-sm border-green-300 focus:border-green-500 focus:ring-green-500 rounded-md"
+                                    >
+                                        <option value="">Sélectionnez une formation</option>
+                                        <option value="dev_web">
+                                            <i class="fas fa-rocket mr-2 text-green-600"></i>
+                                            Développement Web
+                                        </option>
+                                        <option value="data_science">
+                                            <i class="fas fa-book-open mr-2 text-green-600"></i>
+                                            Data Science
+                                        </option>
+                                        <option value="cyber_security">
+                                            <i class="fas fa-shield-alt mr-2 text-green-600"></i>
+                                            Cybersécurité
+                                        </option>
+                                        <option value="ia">
+                                            <i class="fas fa-brain mr-2 text-green-600"></i>
+                                            Intelligence Artificielle
+                                        </option>
+                                    </select>
+                                </div>
+        
+                                <div>
+                                    <label for="motivation" class="text-lg font-semibold text-green-800 block mb-2">Lettre de motivation</label>
+                                    <textarea
+                                        id="motivation"
+                                        name="motivation"
+                                        required
+                                        class="w-full mt-1 py-2 bg-white bg-opacity-70 backdrop-blur-sm border-green-300 focus:border-green-500 focus:ring-green-500 rounded-md"
+                                        placeholder="Décrivez votre motivation pour rejoindre cette formation..."
+                                        rows="5"
+                                    ></textarea>
+                                </div>
+                            </div>
+        
+                            <div class="flex justify-end">
+                                <button type="submit" class="w-full sm:w-auto bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-500 ease-in-out hover:scale-105 hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Envoyer ma candidature
+                                    <i class="fas fa-chevron-right ml-2"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="border-t border-white justify-center mt-12 pt-8 items-center">
-                <p class="text-black text-center">© 2025 IWA. Tous droits réservés.</p>
-            </div>
+        
+            <script>
+                document.getElementById('preinscriptionForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(this);
+                    const formObject = Object.fromEntries(formData.entries());
+                    console.log(formObject);
+                    // Here you would typically send the data to your server
+                    alert('Formulaire soumis avec succès!');
+                });
+            </script>
         </div>
-        <a href="#" class="fixed bottom-8 right-8 bg-custom-green-600 p-3 rounded-full shadow-lg hover:bg-custom-green-700 transition-colors">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-            </svg>
-        </a>
-    </footer>
-</body>
-</html>
+       
+    </main>
 
+    <footer class="bg-emerald-600 text-white py-12">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold mb-4">IWA Formation</h3>
+              <p class="text-sm">Formation supérieure en Ingénierie du Web Avancé</p>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Liens Rapides</h4>
+              <ul class="space-y-2">
+                <li><a href="/objectifs" class="hover:text-emerald-200 transition-colors">Objectifs</a></li>
+                <li><a href="/programme" class="hover:text-emerald-200 transition-colors">Programme</a></li>
+                <li><a href="/preinscription" class="hover:text-emerald-200 transition-colors">Préinscription</a></li>
+                <li><a href="/contact" class="hover:text-emerald-200 transition-colors">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Nous Contacter</h4>
+              <p class="text-sm mb-2">Faculté des Sciences de Tétouan</p>
+              <p class="text-sm mb-2">M'hannech II, B.P. 2121</p>
+              <p class="text-sm mb-2">Tél:  06 62 10 21 67</p>
+              <p class="text-sm">Email: iwa@uae.ac.ma</p>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Suivez-nous</h4>
+              <div class="flex space-x-4">
+                <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+                  <i class="fab fa-facebook-f text-2xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+                  <i class="fab fa-twitter text-2xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+                  <i class="fab fa-linkedin-in text-2xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-emerald-200 transition-colors">
+                  <i class="fab fa-instagram text-2xl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 pt-8 border-t border-emerald-500 text-center">
+            <p class="text-sm">&copy; 2023 IWA Formation. Tous droits réservés.</p>
+          </div>
+        </div>
+      </footer>
+
+</body>
+
+</html>

@@ -46,11 +46,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Fetch attestation types
-$types = $pdo->query("SELECT * FROM typeattestation")->fetchAll(PDO::FETCH_ASSOC);
+// // Fetch attestation types
+// $types = $pdo->query("SELECT * FROM typeattestation")->fetchAll(PDO::FETCH_ASSOC);
 
-// Generate year options (current year and next 4 years)
-$years = range($current_year, $current_year + 4);
+// // Generate year options (current year and next 4 years)
+// $years = range($current_year, $current_year + 4);
 ?>
 
 <!DOCTYPE html>
@@ -89,8 +89,8 @@ $years = range($current_year, $current_year + 4);
 <nav class="bg-white/90 backdrop-blur-md shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0">
-                    <img src="./public/images/image12.png" alt="Logo" class="h-[12vh]">
+            <div class="flex-shrink-0">
+                    <img src="./public/images/Ingénierie_du_Web_Avancé__3_-removebg-preview (1).png" alt="IWA Logo" class="h-[18vh]">
                 </div>
                 <div class="hidden md:flex space-x-6">
                     <a href="./dashboard_etudiant.php" class="flex items-center px-4 py-2 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-lg font-medium transition-all duration-300">
@@ -218,6 +218,14 @@ $years = range($current_year, $current_year + 4);
             </div>
         </div>
     </div>
+    <script>
+    function logout() {
+            sessionStorage.clear();
+            window.location.href = './index.php';
+        }
+    </script>
+    
 </body>
+ 
 </html>
 

@@ -2,7 +2,7 @@
 require_once "config.php";
 
 // Get the note ID from the URL
-$note_id = isset($_GET['IDE']) ? intval($_GET['IDE']) : 0;
+$note_id = isset($_GET['IDEt']) ? intval($_GET['IDEt']) : 0;
 
 $error_message = '';
 $success_message = '';
@@ -10,7 +10,7 @@ $success_message = '';
 // Handle form submission for deletion
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_delete'])) {
     // Delete the note from the database
-    $delete_sql = "DELETE FROM note WHERE idEtud = ?";
+    $delete_sql = "DELETE FROM note WHERE IDEt = ?";
     $stmt = mysqli_prepare($link, $delete_sql);
     mysqli_stmt_bind_param($stmt, "i", $note_id);
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_delete'])) {
 }
 
 // Fetch the note details
-$fetch_sql = "SELECT n.*, e.nom, e.prenom FROM note n JOIN etudiant e ON n.idEtud = e.IDE WHERE n.idEtud = ?";
+$fetch_sql = "SELECT n.*, e.Nom, e.Prenom FROM note n JOIN etudiant e ON n.IDEt = e.IDEt WHERE n.IDEt = ?";
 $stmt = mysqli_prepare($link, $fetch_sql);
 mysqli_stmt_bind_param($stmt, "i", $note_id);
 mysqli_stmt_execute($stmt);
@@ -65,9 +65,9 @@ mysqli_close($link);
             <div class="bg-green-50 rounded-lg p-6 mb-6">
                 <p class="text-lg text-green-800 mb-4">Êtes-vous sûr de vouloir supprimer cette note ?</p>
                 <div class="space-y-2">
-                    <p><strong>Étudiant :</strong> <?php echo htmlspecialchars($note['nom'] . ' ' . $note['prenom']); ?></p>
-                    <p><strong>Matière :</strong> <?php echo htmlspecialchars($note['matiere']); ?></p>
-                    <p><strong>Note :</strong> <?php echo htmlspecialchars($note['note']); ?></p>
+                    <p><strong>Étudiant :</strong> <?php echo htmlspecialchars($note['Nom'] . ' ' . $note['Prenom']); ?></p>
+                    <p><strong>Matière :</strong> <?php echo htmlspecialchars($note['RefMat']); ?></p>
+                    <p><strong>Note :</strong> <?php echo htmlspecialchars($note['Note']); ?></p>
                 </div>
             </div>
 

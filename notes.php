@@ -34,27 +34,31 @@
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0">
-                    <img src="./public/images/image12.png" alt="IWA Logo" class="h-[12vh]">
+            <div class="flex-shrink-0">
+                    <img src="./public/images/Ingénierie_du_Web_Avancé__3_-removebg-preview (1).png" alt="IWA Logo" class="h-[18vh]">
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="./dashboard.php" class="flex items-center px-4 py-2 text-gray-700 hover:text-custom-green-600 hover:bg-custom-green-50 rounded-lg transition-all duration-300">
+                    <a href="./dashboard.php" class="flex items-center px-4 py-2 text-emerald-600 bg-emerald-50 rounded-lg">
                         <i class="fas fa-home mr-2"></i>
                         Tableau de bord
                     </a>
-                    <a href="./etudiants.php" class="flex items-center px-4 py-2 text-gray-700 hover:text-custom-green-600 hover:bg-custom-green-50 rounded-lg transition-all duration-300">
+                    <a href="./cours-admin.php" class="flex items-center px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all duration-300">
+                        <i class="fas fa-laptop-code mr-2"></i>
+                        Cours
+                    </a>
+                    <a href="etudiants.php" class="flex items-center px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all duration-300">
                         <i class="fas fa-user-graduate mr-2"></i>
                         Étudiants
                     </a>
-                    <a href="./notes.php" class="flex items-center px-4 py-2 text-custom-green-600 bg-custom-green-50 rounded-lg">
+                    <a href="./notes.php" class="flex items-center px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all duration-300">
                         <i class="fas fa-star mr-2"></i>
                         Notes
                     </a>
-                    <a href="./attestations.php" class="flex items-center px-4 py-2 text-gray-700 hover:text-custom-green-600 hover:bg-custom-green-50 rounded-lg transition-all duration-300">
+                    <a href="./attestations.php" class="flex items-center px-4 py-2 text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all duration-300">
                         <i class="fas fa-file-alt mr-2"></i>
                         Attestations
                     </a>
-                    <button onclick="logout()" class="flex items-center px-4 py-2 text-gray-700 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-300">
+                    <button onclick="logout()" class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-300">
                         <i class="fas fa-sign-out-alt mr-2"></i>
                         Déconnexion
                     </button>
@@ -63,10 +67,11 @@
         </div>
     </nav>
 
+
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 pt-28 pb-12">
-        <div class="bg-white rounded-2xl shadow-xl p-8">
-            <!-- Header -->
+    <div class="flex flex-col   mb-8 space-y-4 md:space-y-0">
+    <!-- Header -->
             <div class="flex flex-col md:flex-row justify-between items-center mb-8 space-y-4 md:space-y-0">
                 <div class="flex items-center space-x-4">
                     <div class="bg-custom-green-100 p-3 rounded-lg">
@@ -213,7 +218,7 @@
 
     <script>
         function logout() {
-            window.location.href = './logout.php'; // Redirection vers la page de déconnexion
+            window.location.href = './index.php'; // Redirection vers la page de déconnexion
         }
     </script>
 </body>

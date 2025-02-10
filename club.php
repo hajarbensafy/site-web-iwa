@@ -21,81 +21,85 @@
     </script>
 </head>
 <body class="bg-gray-50">
-    <nav class="bg-white shadow-lg fixed w-full z-50 ">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between h-16">
-            <div class="flex-shrink-0 flex items-center">
-              <img src="./images/Ingénierie du Web Avancé (3).png" alt="IWA Logo" class="h-12 w-30" />
-            </div>
-    
-            <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
-              <a href="../index.html"
-                class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
-                Accueil
-              </a>
-    
-              <div class="relative group">
-                <button
-                  class="text-gray-700 group-hover:text-emerald-600 px-3 py-2 text-md font-medium inline-flex items-center transition-colors">
-                  Formation IWA
-                  <svg class="ml-2 h-4 w-4 transition-transform group-hover:rotate-180 " fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-    
-                <div
-                  class="absolute left-0  w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block transition-all duration-200">
-                  <div class="py-1">
-                    <a href="./objectifs.html"class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
-                      Objectifs
-                    </a>
-                    <a href="./programme.html"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
-                      Programme
-                    </a>
-                    <a href="./preinscription.html"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
-                      Préinscription
-                    </a>
-                  </div>
-                </div>
+<nav class="bg-white shadow-lg fixed w-full z-50 ">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex-shrink-0 flex items-center">
+          <img src="./public/images/Ingénierie du Web Avancé (3).png" alt="IWA Logo" class="h-16 w-30" />
+        </div>
+
+        <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
+          <a href="index.php
+          "
+            class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+            Accueil
+          </a>
+
+          <div class="relative group">
+            <button
+              class="text-gray-700 group-hover:text-emerald-600 px-3 py-2 text-md font-medium inline-flex items-center transition-colors">
+              Formation IWA
+              <svg class="ml-2 h-4 w-4 transition-transform group-hover:rotate-180 " fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <div
+              class="absolute left-0  w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block transition-all duration-200">
+              <div class="py-1">
+                <a href="./objectifs.php
+                "
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                  Objectifs
+                </a>
+                <a href="./programme.php
+                "
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                  Programme
+                </a>
+                <a href="./preinscription.php
+                "
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+                  Préinscription
+                </a>
               </div>
-    
-              <a href="/evenements"
-                class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
-                Événements
-              </a>
-              
-              <a href="/espace-etudiants" class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
-                Espace Étudiants
-              </a>
-              
-    
-    
-              <a href="./club.html"
-                class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
-                AI-IoT Club
-              </a>
-    
-              <a href="./contact.html"
-                class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
-                Contact
-              </a>
-            </div>
-    
-            <div class="flex items-center sm:hidden">
-              <button type="button"
-                class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-emerald-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500">
-                <span class="sr-only">Open main menu</span>
-                <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
             </div>
           </div>
+
+          <a href="./events.php"
+            class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+            Événements
+          </a>
+
+         
+
+          <a href="./club.php"
+            class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+            AI-IoT Club
+          </a>
+
+          <a href="./contact.php"
+            class="text-gray-700 hover:text-emerald-600 px-3 py-2 text-md font-medium transition-colors">
+            Contact
+          </a>
+
+       
+              <a href="./login.php" class="block px-4 py-2 text-gray-700 hover:bg-green-50">Connecter</a>
+      </div>
+
+        <div class="flex items-center sm:hidden">
+          <button type="button"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-emerald-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
-      </nav>
+      </div>
+    </div>
+  </nav>
 
     <!-- Hero Section -->
     <section id="accueil" class="relative h-screen pt-16">
